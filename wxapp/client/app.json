@@ -1,13 +1,25 @@
 {
   "pages":[
+    "pages/welcome/welcome",
     "pages/index/index",
     "pages/addCgi/addCgi"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Wafer Quick Start",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/welcome/welcome",
+      "text": "welcome"
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    }],
+    "position": "top"
+  },
+  "debug": true
 }

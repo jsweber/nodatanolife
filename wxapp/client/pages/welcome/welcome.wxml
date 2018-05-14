@@ -1,0 +1,40 @@
+<view>
+    <view class="title" hidden="{{false}}">
+        欢迎来myBlock {{arr[0].text}}
+    </view>
+    <view style="height:5rem;">
+        <view class="green">
+            
+        </view>
+        <view class="red">
+            
+        </view>
+        <view class="blue">
+            
+        </view>
+        <view class="yellow">
+            
+        </view>
+        <view class="pink">
+            
+        </view>
+    </view>
+    <scroll-view scroll-y style="height:200rpx;background:#ccc;" scroll-into-view="{{block}}" scroll-top="{{scrollTop}}">
+        <view class="block" wx:for="{{blockIndex}}" wx:for-index="i" wx:for-item="block" id="{{i}}" wx:key="i">{{block}}</view>
+    </scroll-view>
+    <button type="default" size="mini" bindtap="defaultTap">Button</button>
+    <view class="text">
+        <text>{{text}}</text>
+    </view>
+    <button type="default" bindtap="addLine">add line</button>
+    <button type="default" bindtap="removeLine">remove line</button>
+    <button bindtap="changeText">颤抖吧</button>
+    <button bindtap="alter">alter</button>
+    <template is="test" data="{{...p}}" />
+</view>
+
+<template name="test">
+    <view>
+        <text>name:{{name}}: age{{age}}</text>
+    </view>
+</template>

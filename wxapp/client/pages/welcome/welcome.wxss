@@ -1,0 +1,41 @@
+.green, .red, .blue, .yellow, .pink{
+    width: 150rpx;
+    height:5rem;
+    float: left;
+}
+.block{
+    width: 200rpx;
+    height: 300rpx;
+    background:orange;
+}
+
+.green{background: green}
+.red{background:red}
+.blue{background:blue}
+.yellow{background:yellow}
+.pink{background: pink}
+.controls {
+    position: relative;
+    top: 50%;
+    height: 50px;
+    margin-top: -25px;
+    display: flex;
+}
+.play,.pause,.time {
+    flex: 1;
+    height: 100%;
+}
+.time {
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    line-height: 50px;
+}
+.img {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+.text{
+    height:200rpx;
+}
