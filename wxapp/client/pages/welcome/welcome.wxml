@@ -1,4 +1,9 @@
 <view>
+    <cust-header array="{{[11,12,10,100,0,99]}}">
+        <view>
+            <text class="slot-text">slot text</text>
+        </view>
+    </cust-header>
     <view class="title" hidden="{{false}}">
         欢迎来myBlock {{arr[0].text}}
     </view>

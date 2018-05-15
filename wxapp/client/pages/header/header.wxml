@@ -1,0 +1,18 @@
+<view>
+    <text class="header">header</text>
+    <text>max: {{m1.getMax(array)}}</text>
+    <slot></slot>
+</view>
+
+<wxs module='m1'>
+    var getMax = function(array){
+        var max
+        for (var i = 0; i < array.length; i++){
+            max = typeof max === 'undefined' ? array[i] : 
+                (max >= array[i] ? max : array[i])
+        }
+
+        return max
+    }
+    module.exports.getMax = getMax
+</wxs>
