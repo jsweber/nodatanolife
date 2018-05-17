@@ -1,3 +1,7 @@
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
+
 let text = 'first line'
 let lineArr = []
 let blockIndex = [0,1,2,3]
@@ -9,6 +13,13 @@ Page({
         arr: [{text: 'first'}],
         blockIndex,
         p: {name: 'Lee', age: 30}
+    },
+    getUserInfo(e){
+        qcloud.loginByBtn(e.detail, {
+            success(code){
+                console.log(code)
+            }
+        })
     },
     defaultTap(e){
         this.setData({
