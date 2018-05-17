@@ -151,8 +151,97 @@ var login = function login(options) {
 var setLoginUrl = function (loginUrl) {
     defaultOptions.loginUrl = loginUrl;
 };
+/**
+ * 傻逼微信把wx.getUserInfo接口给禁了，现在只能通过button回调获取用户信息
+ * 
+ * 
+*/
+var loginByBtn = function loginBtn(detail, options){
+    options = utils.extend({}, defaultOptions, options);
+
+    if (!defaultOptions.loginUrl) {
+        options.fail(new LoginError(constants.ERR_INVALID_PARAMS, '登录错误：缺少登录地址，请通过 setLoginUrl() 方法设置登录地址'));
+        return;
+    }
+
+    let doLogin = () => {
+        wx.login({
+            success: function (loginResult) {
+                if (loginResult.code){
+                    var wxLoginResult = {
+                        code: loginResult.code,
+                        encryptedData: detail.encryptedData,
+                        iv: detail.iv,
+                        userInfo: detail.userInfo
+                    }
+    
+                    var userInfo = wxLoginResult.userInfo
+                    var header = {}
+    
+                    header[constants.WX_HEADER_CODE] = wxLoginResult.code
+                    header[constants.WX_HEADER_ENCRYPTED_DATA] = wxLoginResult.encryptedData
+                    header[constants.WX_HEADER_IV] = wxLoginResult.iv
+    
+                    wx.request({
+                        url: options.loginUrl,
+                        header: header,
+                        method: options.method,
+                        data: options.data,
+                        success(result){
+                            var data = result.data
+                            if (data && data.code === 0 && data.data.skey){
+                                var res = data.data
+                                if (res.userinfo){
+                                    Session.set(res.skey)
+                                    wx.setStorageSync('__userinfo', JSON.stringify(res.userinfo))
+                                    options.success(res.userinfo)
+                                }else {
+                                    var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
+                                    var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+                                    options.fail(noSessionError);
+                                }
+                            }
+                        },
+                        fail(err){
+                            var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
+                            options.fail(error);
+                        }
+                    })
+    
+    
+                }else {
+                    var error = new LoginError(constants.ERR_WX_LOGIN_FAILED, '微信登录获取code失败');
+                    error.detail = loginError;
+                    options.fail(error, null);
+                }
+            },
+    
+            fail: function (loginError) {
+                var error = new LoginError(constants.ERR_WX_LOGIN_FAILED, '微信登录失败，请检查网络状态');
+                error.detail = loginError;
+                options.fail(error, null);
+            },
+        })
+    }
+
+    var session = Session.get()
+    if(session){
+        wx.checkSession({
+            success(){
+                options.success(JSON.parse(wx.getStorageSync('__userinfo')))
+            },
+            fail(){
+                wx.clearStorageSync()
+                doLogin()
+            }
+        })
+    }else {
+        doLogin()
+    }
+}
 
 module.exports = {
+    loginByBtn,
     LoginError: LoginError,
     login: login,
     setLoginUrl: setLoginUrl,

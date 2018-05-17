@@ -10,15 +10,25 @@ Page({
         takeSession: false,
         requestResult: ''
     },
-    bindGetUserInfo(e){
-        // console.log(e.detail.errMsg)
-        // console.log(e.detail.userInfo)
-        console.log(e.detail.rawData)
-        this.setData({
-            userInfo: e.detail.userInfo,
-            logged: true
+    wxLogin(){
+        qcloud.request({
+            url: config.service.requestUrl,
+            login: true,
+            success(result) {
+                util.showSuccess('登录成功')
+                that.setData({
+                    userInfo: result.data.data,
+                    logged: true
+                })
+            },
+
+            fail(error) {
+                util.showModel('请求失败', error)
+                console.log('request fail', error)
+            }
         })
     },
+
     // 用户登录示例
     login: function() {
         if (this.data.logged) return
