@@ -11,6 +11,12 @@
             <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击测试登录接口'}}</text>
             <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
         </view>
+        
+    </view>
+    <view>
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+        <open-data type="userNickName" class="nick-name"></open-data>
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
     </view>
 
     <!-- 信道连接测试 -->

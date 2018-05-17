@@ -10,7 +10,15 @@ Page({
         takeSession: false,
         requestResult: ''
     },
-
+    bindGetUserInfo(e){
+        // console.log(e.detail.errMsg)
+        // console.log(e.detail.userInfo)
+        console.log(e.detail.rawData)
+        this.setData({
+            userInfo: e.detail.userInfo,
+            logged: true
+        })
+    },
     // 用户登录示例
     login: function() {
         if (this.data.logged) return
