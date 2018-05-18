@@ -11,5 +11,11 @@ Component({
             value: [1,2,3,4,5]
         }
     },
-    data: {}
+    externalClasses: ['cust-class'],
+    data: {},
+    methods: {
+        tapfn(){
+            this.triggerEvent('childevent', {from: 'child message'}, {bubbles: false})
+        }
+    }
 })

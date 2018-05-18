@@ -1,5 +1,5 @@
-<view>
-    <text class="header">header</text>
+<view bindtap="tapfn">
+    <text class="header cust-class">header</text>
     <text>max: {{m1.getMax(array)}}</text>
     <slot></slot>
 </view>

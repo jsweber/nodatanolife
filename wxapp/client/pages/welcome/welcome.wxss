@@ -43,3 +43,6 @@
     font-size:30rpx;
     color:palegreen;
 }
+.text-color{
+    color: purple;
+}

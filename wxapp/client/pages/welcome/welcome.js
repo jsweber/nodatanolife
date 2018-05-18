@@ -56,11 +56,18 @@ Page({
     },
     changeText(){
         let self = this
-        wx.getLocation({
-            type: 'wgs84',
-            success(res){
-                self.setData({
-                    'arr[0].text' : JSON.stringify(res)
+        // wx.getLocation({
+        //     type: 'wgs84',
+        //     success(res){
+        //         self.setData({
+        //             'arr[0].text' : JSON.stringify(res)
+        //         })
+        //     }
+        // })
+        wx.vibrateLong({
+            success(){
+                wx.showToast({
+                    title: '成功'
                 })
             }
         })
@@ -71,5 +78,8 @@ Page({
             icon: 'success',
             duration: 2000
         })
+    },
+    onParentEvent(e){
+        console.log(e.detail)
     }
 })

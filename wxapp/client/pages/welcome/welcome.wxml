@@ -1,5 +1,5 @@
 <view>
-    <cust-header array="{{[11,12,10,100,0,99]}}">
+    <cust-header array="{{[11,12,10,100,0,99]}}" cust-class="text-color" bindchildevent="onParentEvent">
         <view>
             <text class="slot-text">slot text</text>
         </view>
