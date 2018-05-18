@@ -2,6 +2,7 @@
   "pages":[
     "pages/welcome/welcome",
     "pages/index/index",
+    
     "pages/addCgi/addCgi"
     
   ],

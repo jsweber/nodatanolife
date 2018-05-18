@@ -26,6 +26,11 @@ page {
     margin: 20rpx;
     border-radius: 50%;
 }
+.avatar{
+    width:50rpx;
+    height:50rpx;
+
+}
 
 .userinfo-nickname {
     font-size: 32rpx;
