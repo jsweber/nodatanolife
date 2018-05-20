@@ -2,7 +2,9 @@
   "pages":[
     "pages/welcome/welcome",
     "pages/index/index",
+    
     "pages/addCgi/addCgi"
+    
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
@@ -18,8 +20,7 @@
     }, {
       "pagePath": "pages/index/index",
       "text": "首页"
-    }],
-    "position": "top"
+    }]
   },
   "debug": true
 }

@@ -1,24 +1,16 @@
 <view>
+    <cust-header array="{{[11,12,10,100,0,99]}}" cust-class="text-color" bindchildevent="onParentEvent">
+        <view>
+            <text class="slot-text">slot text</text>
+        </view>
+    </cust-header>
     <view class="title" hidden="{{false}}">
         欢迎来myBlock {{arr[0].text}}
     </view>
-    <view style="height:5rem;">
-        <view class="green">
-            
-        </view>
-        <view class="red">
-            
-        </view>
-        <view class="blue">
-            
-        </view>
-        <view class="yellow">
-            
-        </view>
-        <view class="pink">
-            
-        </view>
+    <view>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button>
     </view>
+
     <scroll-view scroll-y style="height:200rpx;background:#ccc;" scroll-into-view="{{block}}" scroll-top="{{scrollTop}}">
         <view class="block" wx:for="{{blockIndex}}" wx:for-index="i" wx:for-item="block" id="{{i}}" wx:key="i">{{block}}</view>
     </scroll-view>

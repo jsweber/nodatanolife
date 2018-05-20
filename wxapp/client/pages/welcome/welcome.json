@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "欢迎来到welcome"
+    "navigationBarTitleText": "欢迎来到welcome",
+    "usingComponents": {
+        "cust-header": "/pages/header/header"
+    }
 }

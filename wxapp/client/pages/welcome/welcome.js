@@ -1,3 +1,7 @@
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
+
 let text = 'first line'
 let lineArr = []
 let blockIndex = [0,1,2,3]
@@ -9,6 +13,13 @@ Page({
         arr: [{text: 'first'}],
         blockIndex,
         p: {name: 'Lee', age: 30}
+    },
+    getUserInfo(e){
+        qcloud.loginByBtn(e.detail, {
+            success(code){
+                console.log(code)
+            }
+        })
     },
     defaultTap(e){
         this.setData({
@@ -45,11 +56,18 @@ Page({
     },
     changeText(){
         let self = this
-        wx.getLocation({
-            type: 'wgs84',
-            success(res){
-                self.setData({
-                    'arr[0].text' : JSON.stringify(res)
+        // wx.getLocation({
+        //     type: 'wgs84',
+        //     success(res){
+        //         self.setData({
+        //             'arr[0].text' : JSON.stringify(res)
+        //         })
+        //     }
+        // })
+        wx.vibrateLong({
+            success(){
+                wx.showToast({
+                    title: '成功'
                 })
             }
         })
@@ -60,5 +78,8 @@ Page({
             icon: 'success',
             duration: 2000
         })
+    },
+    onParentEvent(e){
+        console.log(e.detail)
     }
 })

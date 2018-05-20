@@ -1,0 +1,6 @@
+.header{
+    background:pink;
+    display: block;
+    width:100%;
+}
+

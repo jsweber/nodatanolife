@@ -10,6 +10,24 @@ Page({
         takeSession: false,
         requestResult: ''
     },
+    wxLogin(){
+        qcloud.request({
+            url: config.service.requestUrl,
+            login: true,
+            success(result) {
+                util.showSuccess('登录成功')
+                that.setData({
+                    userInfo: result.data.data,
+                    logged: true
+                })
+            },
+
+            fail(error) {
+                util.showModel('请求失败', error)
+                console.log('request fail', error)
+            }
+        })
+    },
 
     // 用户登录示例
     login: function() {
