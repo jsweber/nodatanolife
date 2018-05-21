@@ -32,6 +32,14 @@ def redirectUrl():
 def html(name):
     return render_template('index.html', name=name)
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def error_interval(e):
+    return render_template('500.html'), 500
+
 
 if __name__ == '__main__':
     print(__name__)
