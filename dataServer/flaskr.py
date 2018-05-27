@@ -2,8 +2,11 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, make_response, render_template
 from flask_script import Manager
+from flask_wtf import Form
 
 app = Flask(__name__)
+#csrf cross site request forgery
+app.config['SECRET_KEY'] = 'secret key'
 manager = Manager(app)
 
 def conncet_db():
