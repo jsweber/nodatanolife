@@ -8,7 +8,9 @@
         欢迎来myBlock {{arr[0].text}}
     </view>
     <view>
-        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" bindtap="setLoading">获取用户信息</button>
+        <button type="default" size="defaultSize" loading="{{loading}}" bindtap="setLoading">Button</button>
+        <button bindtap="setLoading">setLoading</button>
     </view>
 
     <scroll-view scroll-y style="height:200rpx;background:#ccc;" scroll-into-view="{{block}}" scroll-top="{{scrollTop}}">

@@ -12,9 +12,11 @@ Page({
         text: text,
         arr: [{text: 'first'}],
         blockIndex,
-        p: {name: 'Lee', age: 30}
+        p: {name: 'Lee', age: 30},
+        loading: false
     },
     getUserInfo(e){
+        console.log(e.detail)
         qcloud.loginByBtn(e.detail, {
             success(code){
                 console.log(code)
@@ -81,5 +83,10 @@ Page({
     },
     onParentEvent(e){
         console.log(e.detail)
+    },
+    setLoading(){
+        this.setData({
+            loading: !this.data.loading
+        })
     }
 })
