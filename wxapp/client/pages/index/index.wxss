@@ -1,0 +1,18 @@
+.header{
+    height: 50rpx;
+
+}
+.section{
+    padding: 14rpx;
+}
+.title{
+
+}
+.job{
+    line-height: 50rpx;
+    background:pink;
+}
+.scroll-area{
+    height:1050rpx;
+    background:#ccc;
+}
