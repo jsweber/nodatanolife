@@ -5,51 +5,7 @@
     <scroll-view scroll-x="false" scroll-y="true" class="scroll-area">
         <view class="section">
             <view class="title">目前可查看的职位</view>
-            <navigator url="/pages/addCgi/addCgi" hover-class="navigator-hover" class="job">前端工程师</navigator>
-            <navigator url="/pages/addCgi/addCgi" hover-class="navigator-hover" class="job">大数据工程师</navigator>
-            <navigator url="/pages/addCgi/addCgi" hover-class="navigator-hover" class="job">产品经理</navigator>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
-        </view>
-        <view class="section">
-            <view class="title">目前可查看的职位</view>
-            <view class="job">前端工程师</view>
-            <view class="job">大数据工程师</view>
-            <view class="job">产品经理</view>
+            <navigator url="/pages/report/report?jobid={{job}}" hover-class="navigator-hover" class="job" wx:for="{{jobArr}}" wx:for-item="job" wx:for-index="index" wx:key="job">{{index+1}}、{{job}}</navigator>
         </view>
     </scroll-view>
 
