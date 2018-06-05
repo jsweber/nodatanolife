@@ -1,3 +1,7 @@
 <view>
     {{jobId}}
+    <view class="can-wrapper">
+        <!-- canvas-id和ec是必须传的 -->
+        <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ec}}"></ec-canvas>
+    </view>
 </view>
