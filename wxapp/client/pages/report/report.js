@@ -68,5 +68,15 @@ Page({
         this.setData({
             jobId: options.jobid
         })
+    },
+    onReady(){
+        // Promise.all([Promise.resolve(123)]).then(arr=>{
+        //     console.log(arr)
+        // })
+        this.foo()
+    },
+    async foo(){
+        let r = await Promise.resolve(1)
+        console.log(r)
     }
 })
