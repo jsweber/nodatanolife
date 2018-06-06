@@ -8,6 +8,7 @@ from hello import Job, User, db
 app = Flask(__name__)
 #csrf cross site request forgery
 app.config['SECRET_KEY'] = 'secret key'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 manager = Manager(app)
 
 def conncet_db():
@@ -38,8 +39,9 @@ def html(name):
 
 @app.route('/api/count/<name>', methods=['GET', 'POST'])
 def count(name):
-    # c = db.session.query(Job.job_id).filter(Job.job_name.op('regexp')('java')).count()
-    c = db.session.query(User.username).all()
+    print('name：'+name)
+    c = db.session.query(Job.salary).filter(Job.job_name.op('regexp')(name)).all()
+    # c = db.session.query(User.username).all()
     resp = make_response('<p>'+ str(c) +'</p>')
     return resp
 
