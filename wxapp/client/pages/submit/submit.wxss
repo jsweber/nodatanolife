@@ -1,0 +1,8 @@
+.field{
+    width:18rem;
+}
+.avatar{
+    width:100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
