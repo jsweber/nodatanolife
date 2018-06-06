@@ -1,10 +1,11 @@
 {
   "pages":[
-    "pages/welcome/welcome",
     "pages/index/index",
-    
-    "pages/addCgi/addCgi"
-    
+    "pages/addCgi/addCgi",
+    "pages/welcome/welcome",
+    "pages/report/report",
+    "pages/submit/submit",
+    "pages/about/about"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
@@ -15,11 +16,14 @@
   },
   "tabBar": {
     "list": [{
-      "pagePath": "pages/welcome/welcome",
-      "text": "welcome"
-    }, {
       "pagePath": "pages/index/index",
       "text": "首页"
+    }, {
+      "pagePath": "pages/submit/submit",
+      "text": "提交"
+    },{
+      "pagePath": "pages/about/about",
+      "text": "关于"
     }]
   },
   "debug": true
