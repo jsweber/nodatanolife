@@ -3,7 +3,7 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, make_response, render_template
 from flask_script import Manager
 from flask_wtf import Form
-from hello import Job, db
+from hello import Job, User, db
 
 app = Flask(__name__)
 #csrf cross site request forgery
@@ -39,8 +39,9 @@ def html(name):
 @app.route('/api/count/<name>', methods=['GET', 'POST'])
 def count(name):
     # c = db.session.query(Job.job_id).filter(Job.job_name.op('regexp')('java')).count()
-    c = db.session.query(Job.job_name, Job.welfare_list).filter(Job.job_name.op('regexp')('土建工程师')).count()
-    return c
+    c = db.session.query(User.username).all()
+    resp = make_response('<p>'+ str(c) +'</p>')
+    return resp
 
 @app.errorhandler(404)
 def not_found(e):
