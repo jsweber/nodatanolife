@@ -1,5 +1,8 @@
+.container{
+    font-size: 24rpx;
+}
 .field{
-    width:18rem;
+    widows: 600rpx;
     padding:15rpx 0;
 }
 .red{
@@ -10,15 +13,16 @@
 }
 .field-title{
     text-align: center;
-    width:2rem;
+    width:70rpx;
     float:left;
-    line-height: 1.8rem
+    height: 3em;
+    line-height: 3em;
 }
 .input{
     padding-left:10rpx;
     background:#eee;
-    line-height: 1.8rem;
-    font-size: 24rpx;
+    height: 3em;
+    line-height: 3em;
 }
 .avatar{
     width:100rpx;
@@ -29,19 +33,20 @@
     margin-top: 20rpx;
     text-align:center;
 }
-.btn{font-size:0.7rem;padding:5rpx 10rpx;}
+.btn{font-size:22rpx;padding:5rpx 15rpx;}
 .texr-area{
     padding: 10rpx;
-    width: 15.3rem;
-    margin-left: 2rem;
-    height: 5rem;
+    width: 550rpx;
+    margin-left: 70rpx;
+    height: 400rpx;
 }
 .explain{
-    font-size:24rpx;color:#333;padding-left: 2.3rem;
+    color:#333;
+    padding-left: 80rpx;
     margin-top:20rpx;
 }
 .login-btn{
-    width:6rem;
+    width:280rpx;
     font-size:14px;
     margin-top:20rpx;
 }
@@ -49,3 +54,19 @@
     padding: 50rpx;
     text-indent: 2em;
 }
+.nickname{
+    line-height: 100rpx;
+    float: right;
+    margin-right: 30rpx;
+    font-size: 35rpx;
+}
+.avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    float:right;
+}
+.user-info{
+    height: 130rpx;
+}
+

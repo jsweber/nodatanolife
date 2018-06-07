@@ -5,6 +5,7 @@ var request = require('./lib/request');
 var Tunnel = require('./lib/tunnel');
 
 var exports = module.exports = {
+    getUserInfo: login.getUserInfo,
     loginByBtn: login.loginByBtn,
     login: login.login,
     setLoginUrl: login.setLoginUrl,

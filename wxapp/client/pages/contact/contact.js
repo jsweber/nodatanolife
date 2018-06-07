@@ -6,7 +6,9 @@ var util = require('../../utils/util.js')
 Page({
     data: {
         loading: false,
-        isLogined: false
+        isLogined: false,
+        avatar: '',
+        nickname: ''
     },
     onReady(){
         let self = this
@@ -16,6 +18,7 @@ Page({
                 self.setData({
                     isLogined: true
                 })
+                self.setUserInfo(qcloud.getUserInfo())
             },
             fail(){
                 console.log('未登陆状态')
@@ -27,7 +30,8 @@ Page({
         })
     },
     formSubmit(e){
-        console.log('submit event', e.detail.value)
+        console.log(e.detail.value)
+        util.showSuccess(JSON.stringify(e.detail.value))
     },
     formReset(){
         console.log('submit reset')
@@ -44,8 +48,17 @@ Page({
                     loading: false,
                     isLogined: true
                 })
-                console.log(userInfo)
+                self.setUserInfo(qcloud.getUserInfo())
             }
         })
+    },
+    setUserInfo(userInfo){
+        if (!userInfo) return
+        console.log(userInfo)
+        this.setData({
+            avatar: userInfo.avatarUrl,
+            nickname: userInfo.nickName
+        })
+
     }
 })

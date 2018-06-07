@@ -6,6 +6,10 @@
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" loading="{{loading}}" class="login-btn">微信登陆</button>
     </view>
     <view wx:if="{{isLogined}}">
+        <view class="user-info">
+            <image src="{{avatar}}" class="avatar"/>
+            <text class="nickname" class="nickname"><text style="font-size: 28rpx;">hello</text> {{nickname}}</text>
+        </view>
         <form bindsubmit="formSubmit" bindreset="formReset">
             <view class="field">
                 <text class="red field-title">*</text>

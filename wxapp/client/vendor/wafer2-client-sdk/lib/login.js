@@ -193,7 +193,7 @@ var loginByBtn = function loginBtn(detail, options){
                                 var res = data.data
                                 if (res.userinfo){
                                     Session.set(res.skey)
-                                    wx.setStorageSync('__userinfo', JSON.stringify(res.userinfo))
+                                    wx.setStorageSync(constants.STORE_USERINFO, JSON.stringify(res.userinfo))
                                     options.success(res.userinfo)
                                 }else {
                                     var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
@@ -228,7 +228,7 @@ var loginByBtn = function loginBtn(detail, options){
     if(session){
         wx.checkSession({
             success(){
-                options.success(JSON.parse(wx.getStorageSync('__userinfo')))
+                options.success(JSON.parse(wx.getStorageSync(constants.STORE_USERINFO)))
             },
             fail(){
                 wx.clearStorageSync()
@@ -240,7 +240,17 @@ var loginByBtn = function loginBtn(detail, options){
     }
 }
 
+let getUserInfo = function(){
+    let userInfo = null
+    try{
+        userInfo = JSON.parse(wx.getStorageSync(constants.STORE_USERINFO))
+    }catch(e){}
+    
+    return userInfo
+}
+
 module.exports = {
+    getUserInfo,
     loginByBtn,
     LoginError: LoginError,
     login: login,
