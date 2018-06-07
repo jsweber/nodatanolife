@@ -4,12 +4,27 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 from flask_script import Manager
 from flask_wtf import Form
 from hello import Job, User, db
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 #csrf cross site request forgery
 app.config['SECRET_KEY'] = 'secret key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+app.config['MAIL_SERVER'] = 'smtp.qq.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'nodatanolife@qq.com'
+app.config['MAIL_PASSWORD'] = 'ghhxublhjmyldhad'
+
 manager = Manager(app)
+mail = Mail(app)
+message = Message('test subject', recipients=['951092973@qq.com'])
+message.body = 'test content'
+mail.send(message)
+# message.html = '<p style="color:red">html</p>'
+# with app.app_context():
+    
 
 def conncet_db():
     rv = sqlite3.connect(app.config['DATABASE'])
