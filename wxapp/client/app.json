@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/submit/submit",
+    "pages/contact/contact",
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/welcome/welcome",
@@ -24,8 +24,8 @@
       "pagePath": "pages/search/search",
       "text": "搜索"
     },{
-      "pagePath": "pages/submit/submit",
-      "text": "提交"
+      "pagePath": "pages/contact/contact",
+      "text": "交流"
     },{
       "pagePath": "pages/about/about",
       "text": "关于"

@@ -1,0 +1,30 @@
+<view class="container">
+    <view wx:if="{{!isLogined}}">
+        <view class="notice">
+            此功能需要区分用户，所以希望你点击下面的按钮，用微信登陆。
+        </view>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" loading="{{loading}}" class="login-btn">微信登陆</button>
+    </view>
+    <view wx:if="{{isLogined}}">
+        <form bindsubmit="formSubmit" bindreset="formReset">
+            <view class="field">
+                <text class="red field-title">*</text>
+                <input placeholder="你目前的职位" auto-focus maxlength="20" name="nowJob" class="input border-circle"/>
+            </view>
+            <view class="field">
+                <text class="red field-title">*</text>
+                <input placeholder="想了解的职位" auto-focus maxlength="20" name="wantedJob" class="input border-circle"/>
+            </view>
+            <view class="field">
+                <textarea placeholder="其他" name="issue" class="texr-area input border-circle"/>
+            </view>
+            <view class="explain">
+                <text><text class="red">*</text>为必填项</text>
+            </view>
+            <view class="btn-area">
+                <button size="mini" formType="submit" class="btn">提 交</button>
+            </view>
+        </form>
+    </view>
+    
+</view>
