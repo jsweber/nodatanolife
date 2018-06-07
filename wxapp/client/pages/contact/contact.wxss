@@ -1,0 +1,72 @@
+.container{
+    font-size: 24rpx;
+}
+.field{
+    widows: 600rpx;
+    padding:15rpx 0;
+}
+.red{
+    color: red;
+}
+.border-circle{
+    border-radius: 8rpx;
+}
+.field-title{
+    text-align: center;
+    width:70rpx;
+    float:left;
+    height: 3em;
+    line-height: 3em;
+}
+.input{
+    padding-left:10rpx;
+    background:#eee;
+    height: 3em;
+    line-height: 3em;
+}
+.avatar{
+    width:100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+.btn-area{
+    margin-top: 20rpx;
+    text-align:center;
+}
+.btn{font-size:22rpx;padding:5rpx 15rpx;}
+.texr-area{
+    padding: 10rpx;
+    width: 550rpx;
+    margin-left: 70rpx;
+    height: 400rpx;
+}
+.explain{
+    color:#333;
+    padding-left: 80rpx;
+    margin-top:20rpx;
+}
+.login-btn{
+    width:280rpx;
+    font-size:14px;
+    margin-top:20rpx;
+}
+.notice{
+    padding: 50rpx;
+    text-indent: 2em;
+}
+.nickname{
+    line-height: 100rpx;
+    float: right;
+    margin-right: 30rpx;
+    font-size: 35rpx;
+}
+.avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    float:right;
+}
+.user-info{
+    height: 130rpx;
+}
+

@@ -17,4 +17,6 @@ module.exports = {
 
     ERR_SESSION_INVALID: 'ERR_SESSION_INVALID',
     ERR_CHECK_LOGIN_FAILED: 'ERR_CHECK_LOGIN_FAILED',
+
+    STORE_USERINFO: '__userinfo'
 };
