@@ -8,6 +8,7 @@ from __init__ import db
 
 class Job(db.Model):
     __tablename__= 'liepin_2018_4'
+    __table_args__ = {"useexisting": True}
     job_id = db.Column(db.String(32), primary_key=True)
     job_name = db.Column(db.String(50), nullable=False, index=True)
     job_url = db.Column(db.String(300))

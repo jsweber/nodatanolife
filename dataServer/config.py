@@ -6,6 +6,7 @@ class Config(object):
     FLASKY_MAIL_SUBJECT_PREFIX = '[ndnl]'
     FLASKY_MAIL_SENDER = 'Admin <nodatanolife@qq.cn>'
     FLASKY_ADMIN = os.environ.get('NDNL_ADMIN')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
     def init_app(app):
