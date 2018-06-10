@@ -1,7 +1,5 @@
 import os
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-
 class Config(object):
     SECRET_KEY = os.environ.get('NDNL_SECRET_KEY') or 'passwd string'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True

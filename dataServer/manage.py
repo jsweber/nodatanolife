@@ -2,11 +2,11 @@
 
 import os
 from app import create_app, db
-from app.models import User, Role
+from app.models import User, Job
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
-app = create_app(os.getenv('CONFIG_NAME') os 'default')
+app = create_app(os.getenv('CONFIG_NAME') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
 

@@ -1,2 +1,2 @@
-from jobs import Job
-from users import User
+from .jobs import Job
+from .users import User
