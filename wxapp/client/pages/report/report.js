@@ -73,7 +73,7 @@ Page({
         // Promise.all([Promise.resolve(123)]).then(arr=>{
         //     console.log(arr)
         // })
-        this.foo()
+        // this.foo()
     },
     async foo(){
         let r = await Promise.resolve(1)
