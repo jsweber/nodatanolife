@@ -6,6 +6,14 @@ from flask_wtf import Form
 from hello import Job, User, db
 from flask_mail import Mail, Message
 
+from flask_wtf import Form
+from wtforms import StringField, SubmitField
+from wtforms.validators import Required
+
+class NameForm(Form):
+    name = StringField('what is your name?', validators=[Required()])
+    submit = SubmitField('submit')
+
 app = Flask(__name__)
 #csrf cross site request forgery
 app.config['SECRET_KEY'] = 'secret key'
@@ -59,6 +67,12 @@ def count(name):
     # c = db.session.query(User.username).all()
     resp = make_response('<p>'+ str(c) +'</p>')
     return resp
+
+@app.route('.login', methods=['GET'])
+def login():
+    form = NameForm()
+    return render_template('auth/login.html', form=form)
+
 
 @app.errorhandler(404)
 def not_found(e):

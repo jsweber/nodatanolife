@@ -1,5 +1,6 @@
 import os, sys
 from datetime import datetime
+from flask_login import login_required
 from flask import Flask, make_response, url_for, request, json, jsonify, session, redirect, render_template
 
 parentDir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -22,7 +23,9 @@ def login():
         return jsonify(username=request.args.get('name', 'nobody'), age=30, location='shanghai')
 
 @main.route('/api/count/<name>')
+@login_required
 def count(name):
+    #只有登录用户可以访问
     c = db.session.query(Job.salary).filter(Job.job_name.op('regexp')(name)).all()
     resp = make_response('<p>'+ str(c) +'</p>')
     return resp
