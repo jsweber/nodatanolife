@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/contact/contact",
     "pages/index/index",
+    "pages/contact/contact",
+    
     "pages/addCgi/addCgi",
     "pages/welcome/welcome",
     "pages/report/report",

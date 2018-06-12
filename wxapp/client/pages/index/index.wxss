@@ -3,16 +3,43 @@
 
 }
 .section{
-    padding: 14rpx;
+    padding: 18rpx;
 }
 .title{
-
+    margin-bottom: 20rpx;
+    border-bottom: 1rpx solid #aaa;
 }
 .job{
-    line-height: 50rpx;
-    background:pink;
+    margin-bottom: 24rpx;
+    line-height: 70rpx;
+    background:#99FFFF;
+    text-indent: 1em;
+    border-radius: 8rpx;
+    box-shadow: 1px 1px 1px #ccc;
+}
+.job:nth-of-type(2n){
+    background:#CCFFFF;
 }
 .scroll-area{
-    height:1050rpx;
-    background:#ccc;
+    height:700rpx;
+    /* background: #ccc; */
+}
+.notice-wrapper{
+    width:750rpx;
+    height: 400rpx;
+}
+.slide-image{
+    width:100%;
+    height:100%;
+}
+.notice-text{
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    position:absolute;
+    top:170rpx;
+    left:0;
+    color:#fff;
+    text-shadow: 1px 1px 1px #222;
 }

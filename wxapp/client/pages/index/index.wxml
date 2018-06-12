@@ -1,11 +1,19 @@
 <view class="container">
-    <view class="header">
-        <text>截止2018年6月1日 共有55,0000条数据</text>
-    </view>
+    <swiper indicator-dots="true" class="notice-wrapper"
+        autoplay="true" interval="5000" duration="500">
+        <block wx:for="{{notices}}" wx:key="item.img">
+            <swiper-item>
+            <text class="notice-text">{{item.text}}</text>
+            <image src="{{item.img}}" class="slide-image" mode="center"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    
     <scroll-view scroll-x="false" scroll-y="true" class="scroll-area">
         <view class="section">
-            <view class="title">目前可查看的职位</view>
+            <view class="title">热门职位</view>
             <navigator url="/pages/report/report?jobid={{job}}" hover-class="navigator-hover" class="job" wx:for="{{jobArr}}" wx:for-item="job" wx:for-index="index" wx:key="job">{{index+1}}、{{job}}</navigator>
+            <view style="text-align:center;"><text class="iconfont icon-arrowup"></text></view>
         </view>
     </scroll-view>
 

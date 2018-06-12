@@ -3,7 +3,7 @@
 }
 .field{
     widows: 600rpx;
-    padding:15rpx 0;
+    padding:10rpx 0;
 }
 .red{
     color: red;
@@ -13,7 +13,7 @@
 }
 .field-title{
     text-align: center;
-    width:70rpx;
+    width:50rpx;
     float:left;
     height: 3em;
     line-height: 3em;
@@ -34,10 +34,10 @@
     text-align:center;
 }
 .btn{font-size:22rpx;padding:5rpx 15rpx;}
-.texr-area{
+.text-area{
     padding: 10rpx;
-    width: 550rpx;
-    margin-left: 70rpx;
+    width: 600rpx;
+    margin-left: 50rpx;
     height: 400rpx;
 }
 .explain{

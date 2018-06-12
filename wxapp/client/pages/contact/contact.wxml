@@ -20,7 +20,7 @@
                 <input placeholder="想了解的职位" auto-focus maxlength="20" name="wantedJob" class="input border-circle"/>
             </view>
             <view class="field">
-                <textarea placeholder="其他" name="issue" class="texr-area input border-circle"/>
+                <textarea placeholder="其他" name="issue" class="text-area input border-circle"/>
             </view>
             <view class="explain">
                 <text><text class="red">*</text>为必填项</text>
