@@ -19,7 +19,7 @@ app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USERNAME'] = 'nodatanolife@qq.com'
-app.config['MAIL_PASSWORD'] = 'ghhxublhjmyldhad'
+app.config['MAIL_PASSWORD'] = 'deyqqpsuocwfdcgh'
 
 def send_async_mail(app, msg):
     with app.app_context():

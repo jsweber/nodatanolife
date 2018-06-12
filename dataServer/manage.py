@@ -10,6 +10,13 @@ app = create_app(os.getenv('CONFIG_NAME') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
 
+@manager.command
+def test():
+    ''' python manage.py test '''
+    import unittest
+    test = unittest.TestLoader().discover('test')
+    unittest.TextTestRunner(verbosity=2).run(test)
+
 def make_shell_context():
     return dict(app=app, db=db, User=User, Job=Job)
 
@@ -18,4 +25,5 @@ manager.add_command('db', MigrateCommand)
     
 if __name__ == '__main__':
     manager.run()
+    # pass
 
