@@ -1,3 +1,29 @@
 .can-wrapper{
     height:500rpx;
 }
+.basic-info{
+    font-size: 30rpx;
+    padding: 14px;
+}
+.job-name{
+
+}
+.sample-num{
+    display: inline-block;
+    line-height: 50rpx;
+}
+.sample-time{
+    display: inline-block;
+    line-height: 50rpx;
+    margin-left: 50rpx;
+}
+.data{
+    color: #3300CC;
+    font-size:26rpx;
+}
+.job-name{
+    line-height: 60rpx;
+    font-size:32rpx;
+    color: #000099;
+    border-bottom: 1rpx solid #222;
+}

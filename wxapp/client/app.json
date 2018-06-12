@@ -1,12 +1,10 @@
 {
   "pages":[
+    "pages/report/report",
     "pages/index/index",
     "pages/contact/contact",
-    
     "pages/addCgi/addCgi",
     "pages/welcome/welcome",
-    "pages/report/report",
-    
     "pages/about/about",
     "pages/search/search"
   ],

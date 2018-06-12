@@ -1,7 +1,15 @@
 <view>
-    {{jobId}}
+    <view class="basic-info">
+        <view class="job-name">{{jobId}}</view>
+        <text class="sample-num">样本数：<text class="data">{{sampleNum}}</text></text>
+        <text class="sample-time">取样时间：<text class="data">{{sampleTime}}</text></text>
+    </view>
     <view class="can-wrapper">
         <!-- canvas-id和ec是必须传的 -->
-        <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ec}}"></ec-canvas>
+        <ec-canvas canvas-id="job-trend" ec="{{trendOption}}"></ec-canvas>
+    </view>
+    <view class="can-wrapper">
+        <!-- canvas-id和ec是必须传的 -->
+        <ec-canvas canvas-id="job-salary" ec="{{salaryOption}}"></ec-canvas>
     </view>
 </view>
