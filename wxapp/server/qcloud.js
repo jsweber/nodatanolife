@@ -6,7 +6,7 @@ const configs = require('./config')
 
 // 获取 sdk.config
 const sdkConfig = (() => {
-    const sdkConfigPath = '/data/release/sdk.config.json'
+    const sdkConfigPath = process.env.NodeEnv === 'dev' ? './sdk.config.json' : '/data/release/sdk.config.json'
 
     // 检查文件是否存在
     try {

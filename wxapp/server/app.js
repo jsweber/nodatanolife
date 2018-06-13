@@ -12,8 +12,8 @@ app.use(response)
 app.use(bodyParser())
 
 // 引入路由分发
-const router = require('./routes')
-app.use(router.routes())
+app.use(require('./routes/ndnl').routes())
+app.use(require('./routes/index').routes())
 
 // 启动程序，监听端口
 app.listen(config.port, () => debug(`listening on port ${config.port}`))

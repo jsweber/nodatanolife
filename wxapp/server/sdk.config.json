@@ -1,0 +1,8 @@
+{
+    "serverHost": "127.0.0.1",
+    "tunnelServerUrl": "127.0.0.1",
+    "tunnelSignatureKey": "123456guess",
+    "qcloudAppId": "x888",
+    "qcloudSecretId": "x888",
+    "qcloudSecretKey": "x888"
+}

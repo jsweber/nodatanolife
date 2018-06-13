@@ -1,5 +1,4 @@
 module.exports = ctx=> {
-    ctx.state.data = {
-        msg: 'Hello World'
-    }
+    console.log('fuck   wxapp!!!!!!!!!!!!!')
+    ctx.body='hello wxapp fuck'
 }

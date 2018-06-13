@@ -18,5 +18,14 @@ Page({
             }
         ],
         jobArr: ['前端工程师', '算法工程师', '产品经理','前端工程师', '算法工程师', '产品经理','前端工程师', '算法工程师', '产品经理']
+    },
+    onLoad(){
+        let self = this
+        wx.request({
+            url: `${config.service.host}/app/hotjob`,
+            success(data){
+                self.jobArr = data.data.job
+            }
+        })
     }
 })
