@@ -1,11 +1,17 @@
 import os
 import sys
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+
 basedir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.insert(0, basedir)
-from __init__ import db
+from __init__ import db, login_manager
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(init(user_id))
+
+class User(UserMixin, db.Model):
     __tablename__='user'
     __table_args__ = {"useexisting": True}
     user_id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +32,7 @@ class User(db.Model):
     
     # password = db.Column(db.String(45))
     telephone = db.Column(db.String(45))
-    email = db.Column(db.String(45))
+    email = db.Column(db.String(45), unique=True, index=True)
     gender = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):
