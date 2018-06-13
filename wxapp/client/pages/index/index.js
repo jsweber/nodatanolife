@@ -23,8 +23,18 @@ Page({
         let self = this
         wx.request({
             url: `${config.service.host}/app/hotjob`,
+            success(resp){
+                console.log(resp)
+                self.setData({
+                    jobArr: resp.data.data.jobs
+                })
+            }
+        })
+
+        wx.request({
+            url: `${config.service.host}/weapp/demo`,
             success(data){
-                self.jobArr = data.data.job
+                console.log(data)
             }
         })
     }
