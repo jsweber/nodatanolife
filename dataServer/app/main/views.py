@@ -22,6 +22,15 @@ def login():
     elif request.method == 'GET':
         return jsonify(username=request.args.get('name', 'nobody'), age=30, location='shanghai')
 
+@main.route('/test', methods=['GET', 'POST'])
+def test():
+    data = request.args.get('data', None)
+    if request.method == 'POST':
+        return jsonify(code=200, data=data, message='ok')
+    elif request.method == 'GET':
+        return jsonify(code=200, data=data, message='ok')
+
+
 @main.route('/api/count/<name>')
 @login_required
 def count(name):
