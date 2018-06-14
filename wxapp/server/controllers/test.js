@@ -6,5 +6,11 @@ module.exports = async ctx=> {
     })
     // resp = resp.charAt(1)
     ctx.response.type = 'json'
+    try{
+        resp.data.data = JSON.parse(resp.data.data)
+    }catch(e){
+        console.log('返回的不是json数据')
+    }
+    
     ctx.body = resp.data
 }
