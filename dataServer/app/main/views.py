@@ -24,10 +24,13 @@ def login():
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
-    data = request.args.get('data', None)
     if request.method == 'POST':
+        data = request.form['data']
+        # print('form===================', request.form.get('data')) 都是可以的
+        # print('values================', request.values.get('data'))
         return jsonify(code=200, data=data, message='ok')
     elif request.method == 'GET':
+        data = request.args.get('data', None)
         return jsonify(code=200, data=data, message='ok')
 
 
