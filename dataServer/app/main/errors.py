@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, jsonify
 import os 
 import sys
 
@@ -8,6 +8,11 @@ from main import main
 
 @main.app_errorhandler(404)
 def page_not_found(e):
+    if request.accept_mimeTypes.accept_json and not request.accept_mimeTypes.accept_html:
+        resp = jsonify({error: 'not found'})
+        resp.status_code = 404
+        return resp
+
     return render_template('404.html'), 404
 
 @main.app_errorhandler(500)

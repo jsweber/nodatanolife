@@ -8,6 +8,7 @@ sys.path.insert(0, parentDir)
 from main import main
 from __init__ import db
 from models import Job
+import json
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -24,10 +25,15 @@ def login():
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
-    data = request.args.get('data', None)
     if request.method == 'POST':
-        return jsonify(code=200, data=data, message='ok')
+        # print('form===================', request.form) #都是可以的
+        # print('values================', request.values)
+        # data = request.values.get('data')
+        # print(request.get_data())
+        reqData = json.loads(request.get_data().decode('utf-8'))
+        return jsonify(code=200, data=reqData.get('data'), message='ok')
     elif request.method == 'GET':
+        data = request.args.get('data', None)
         return jsonify(code=200, data=data, message='ok')
 
 
