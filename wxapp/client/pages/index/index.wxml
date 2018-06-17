@@ -1,7 +1,7 @@
 <view class="container">
     <swiper indicator-dots="true" class="notice-wrapper"
         autoplay="true" interval="5000" duration="500">
-        <block wx:for="{{notices}}" wx:key="item.img">
+        <block wx:for="{{swipers}}" wx:key="item.img">
             <swiper-item>
             <text class="notice-text">{{item.text}}</text>
             <image src="{{item.img}}" class="slide-image" mode="center"/>

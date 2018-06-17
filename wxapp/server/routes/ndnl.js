@@ -7,8 +7,10 @@ const router = require('koa-router')({
 const controllers = require('../controllers')
 const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
 
-router.get('/hotjob', controllers.hotjob)
-
 router.post('/test', controllers.test)
+
+router.get('/swiper', controllers.ndnl.swiper)
+router.get('/hotjob', controllers.ndnl.hotJob)
+
 
 module.exports = router
