@@ -72,6 +72,7 @@ Page({
         jobId: '前端工程师',
         sampleNum: 0,
         sampleTime: 0,
+        staDeviation: 0.12,
         trendOption: {
             onInit: chartFactory()
         },
