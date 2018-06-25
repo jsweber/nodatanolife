@@ -1,6 +1,45 @@
 <view class="wrapper">
-    <view class="search-wrapper">
-        <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="search" bindconfirm="search" value="{{searchVal}}"/>
-        <button size="default" loading="{{loading}}" bindtap="search" class="search-btn">搜 索</button>
+    <form class="search-wrapper" wx:if="{{!searchVal}}" bindsubmit="search">
+        <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="done" name="value"/>
+        <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
+    </form>
+
+    <view wx:if="{{!!searchVal}}" class="result-wrapper" bindsubmit="search">
+        <form class="search-wrapper-min">
+            <input type="text" placeholder="输入职位名或者相关信息" class="search-text-min" confirm-type="done" name="value" value="{{searchVal}}"/>
+            <button size="mini" loading="{{minLoading}}" formType="submit" class="search-btn-min">搜 索</button>
+        </form>
+        <view class="message">
+            <text>共20条数据</text>
+        </view>
+        <view class="result-list">
+            <view class="result-item">
+                <view>
+                    <text class="job-name">职位：web前端工程师</text>
+                    <text class="publish-time">发布：2018年6月20号</text>
+                </view>
+                <view>
+                    <text class="company">公司：google</text>
+                    <text class="salary">年薪：30w</text>
+                </view>
+                <view class="descible">
+                    <text>bug: 微信版本 6.3.30，textarea 在列表渲染时，新增加的 textarea 在自动聚焦时的位置计算错误。
+tip: textarea 的 blur 事件会晚于页面上的 tap 事件，如果需要在 button 的点击事件获取 textarea，可以使用 form 的 bindsubmit。</text>
+                </view>
+            </view>
+             <view class="result-item">
+                
+            </view>
+             <view class="result-item">
+                
+            </view>
+             <view class="result-item">
+                
+            </view>
+             <view class="result-item">
+                
+            </view>
+            <view class="explain">反爬虫，只返回5条权重最高的数据</view>
+        </view>
     </view>
 </view>
