@@ -1,3 +1,6 @@
-<view>
-    
+<view class="wrapper">
+    <view class="search-wrapper">
+        <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="search" bindconfirm="search" value="{{searchVal}}"/>
+        <button size="default" loading="{{loading}}" bindtap="search" class="search-btn">搜 索</button>
+    </view>
 </view>

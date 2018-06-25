@@ -1,0 +1,17 @@
+.wrapper{
+    padding: 15rpx;
+}
+.search-wrapper{
+    padding: 30rpx;
+}
+.search-text{
+    border: 1px solid #99FFFF;
+    font-size: 32rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    padding: 4rpx 10rpx;
+}
+.search-btn{
+    height: 80rpx;
+    margin: 30rpx auto;
+}
