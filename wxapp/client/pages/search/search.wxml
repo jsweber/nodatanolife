@@ -1,8 +1,10 @@
 <view class="wrapper">
-    <form class="search-wrapper" wx:if="{{!searchVal}}" bindsubmit="search">
-        <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="done" name="value"/>
-        <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
-    </form>
+    <view wx:if="{{!searchVal}}">
+        <form class="search-wrapper" bindsubmit="search">
+            <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="done" name="value"/>
+            <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
+        </form>
+    </view>
 
     <view wx:if="{{!!searchVal}}" class="result-wrapper" bindsubmit="search">
         <form class="search-wrapper-min">
@@ -13,7 +15,7 @@
             <text>共20条数据</text>
         </view>
         <view class="result-list">
-            <view class="result-item">
+            <view class="result-item" bindtap="showDetail" wx:for="{{searchResults}}" wx:for-item="result" wx:key="result" data-id="{{result}}">
                 <view>
                     <text class="job-name">职位：web前端工程师</text>
                     <text class="publish-time">发布：2018年6月20号</text>
@@ -27,19 +29,17 @@
 tip: textarea 的 blur 事件会晚于页面上的 tap 事件，如果需要在 button 的点击事件获取 textarea，可以使用 form 的 bindsubmit。</text>
                 </view>
             </view>
-             <view class="result-item">
-                
-            </view>
-             <view class="result-item">
-                
-            </view>
-             <view class="result-item">
-                
-            </view>
-             <view class="result-item">
-                
-            </view>
             <view class="explain">反爬虫，只返回5条权重最高的数据</view>
         </view>
+        <view class="job-detail" hidden="{{isShow}}">
+            <view class="detial">
+                
+            </view>
+            <view class="clear-btn">
+                <icon type="clear" size="40" bindtap="closeDetail"/>
+            </view>
+            
+        </view>
     </view>
+    
 </view>
