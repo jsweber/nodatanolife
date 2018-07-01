@@ -8,11 +8,7 @@
 .job-name{
 
 }
-.sample-num{
-    display: inline-block;
-    line-height: 50rpx;
-}
-.sample-time{
+.calc-pair{
     display: inline-block;
     line-height: 50rpx;
     margin-left: 50rpx;

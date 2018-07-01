@@ -1,8 +1,9 @@
 <view>
     <view class="basic-info">
         <view class="job-name">{{jobId}}</view>
-        <text class="sample-num">样本数：<text class="data">{{sampleNum}}</text></text>
-        <text class="sample-time">取样时间：<text class="data">{{sampleTime}}</text></text>
+        <text class="calc-pair">样本数：<text class="data">{{sampleNum}}</text></text>
+        <text class="calc-pair">取样时间：<text class="data">{{sampleTime}}</text></text>
+        <text class="calc-pair">标准差：<text class="data">{{staDeviation}}</text></text>
     </view>
     <view class="can-wrapper">
         <!-- canvas-id和ec是必须传的 -->

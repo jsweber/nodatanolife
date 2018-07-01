@@ -18,11 +18,19 @@ const ReportData = {
     job: '前端工程师',
     sampleNum: 790,
     extractTime:[Date.now()- 7 * 24 * 3600 * 1000, Date.now()],
+    staDeviation: 0.12,
     data: [{
         job: '前端工程师',
         requireList: '',
         salary: '10w',
         company: '阿里巴巴',
+        extractTime: Date.now(),
+        pushlishTime:  Date.now(),
+    }, {
+        job: 'web前端工程师',
+        requireList: '',
+        salary: '20w',
+        company: '腾讯',
         extractTime: Date.now(),
         pushlishTime:  Date.now(),
     }]

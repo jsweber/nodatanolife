@@ -1,12 +1,12 @@
 {
   "pages":[
+    "pages/search/search",
     "pages/index/index",
     "pages/report/report",
     "pages/contact/contact",
     "pages/addCgi/addCgi",
     "pages/welcome/welcome",
-    "pages/about/about",
-    "pages/search/search"
+    "pages/about/about"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
