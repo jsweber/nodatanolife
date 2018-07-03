@@ -1,13 +1,13 @@
 <view class="wrapper">
     <view wx:if="{{!searchVal}}">
-        <form class="search-wrapper" bindsubmit="search">
+        <form class="search-wrapper">
             <input type="text" placeholder="输入职位名或者相关信息" class="search-text" confirm-type="done" name="value"/>
             <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
         </form>
     </view>
 
     <view wx:if="{{!!searchVal}}" class="result-wrapper" bindsubmit="search">
-        <form class="search-wrapper-min">
+        <form class="search-wrapper-min" bindsubmit="search">
             <input type="text" placeholder="输入职位名或者相关信息" class="search-text-min" confirm-type="done" name="value" value="{{searchVal}}"/>
             <button size="mini" loading="{{minLoading}}" formType="submit" class="search-btn-min">搜 索</button>
         </form>

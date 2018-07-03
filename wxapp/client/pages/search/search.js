@@ -8,7 +8,7 @@ Page({
         searchResults: [1, 2]
     },
     search(e){
-        console.log(e.detail)
+        console.log(getApp().globalData)
         this.setData({
             searchVal: e.detail.value.value,
             loading: true

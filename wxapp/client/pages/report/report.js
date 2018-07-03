@@ -117,6 +117,12 @@ Page({
             // jobId: options.jobid
         })
     },
+    onShareAppMessage(){
+        return {
+            title: 'hahaha',
+            path: '/pages/report/report?jobid=前端开发'
+        }
+    },
     onReady(){
 
     }
