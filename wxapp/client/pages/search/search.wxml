@@ -5,6 +5,11 @@
             <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
         </form>
     </view>
+    <job-detail inner-text="from search" bind:myevent="onMyEvent">
+        <view>
+            from slot
+        </view>
+    </job-detail>
 
     <view wx:if="{{!!searchVal}}" class="result-wrapper" bindsubmit="search">
         <form class="search-wrapper-min" bindsubmit="search">

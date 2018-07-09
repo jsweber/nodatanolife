@@ -1,0 +1,5 @@
+<view class="inner">
+    {{innerText}}
+    <button bindtap="ontap">Button</button>
+</view>
+<slot></slot>

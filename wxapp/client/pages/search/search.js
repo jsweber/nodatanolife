@@ -24,5 +24,20 @@ Page({
         this.setData({
             isShow: false
         })
+    },
+    onReady(){
+        let query = wx.createSelectorQuery().in(this)
+        query.select('.result-list').boundingClientRect(res => {
+            console.log(res.left)
+        })
+        query.selectViewport().scrollOffset()
+        query.exec(res => {
+            console.log(res[0].top, res[1].scrollTop)
+            
+            
+        })
+    },
+    onMyEvent(e){
+        console.log(e.detail)
     }
 })
