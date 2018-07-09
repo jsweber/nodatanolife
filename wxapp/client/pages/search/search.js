@@ -1,5 +1,8 @@
 
+let myBehavior = require('../behaviors/my-hehavior.js')
+
 Page({
+    behaviors: [myBehavior, 'wx://form-field'],
     data: {
         loading: false,
         minLoading: false,
