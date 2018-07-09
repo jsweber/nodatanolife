@@ -27,3 +27,5 @@ requests==2.18.4
 SQLAlchemy==1.2.7
 Werkzeug==0.14.1
 WTForms==2.2.1
+elasticsearch==6.3.0
+elasticsearch-dsl==6.1.0
