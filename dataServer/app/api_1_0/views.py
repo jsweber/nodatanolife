@@ -2,6 +2,8 @@ import os, sys
 from datetime import datetime
 from flask_login import login_required
 from flask import Flask, make_response, url_for, request, json, jsonify, session, redirect, render_template
+from elasticsearch import Elasticsearch
+from elasticsearch_dsl import Search
 
 parentDir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.insert(0, parentDir)
@@ -9,6 +11,8 @@ from api_1_0 import api
 from __init__ import db
 from models import Job
 import json
+
+client = Elasticsearch()
 
 @api.route('/test', methods=['GET', 'POST'])
 def test():
@@ -22,4 +26,24 @@ def test():
     elif request.method == 'GET':
         data = request.args.get('data', None)
         return jsonify(code=200, data=data, message='ok')
+
+@api.route('/s', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        postData = json.loads(request.get_data().decode('utf8'))
+        query = postData.get('q')
+    elif request.method == 'GET':
+        query = request.args.get('q')
+    print(query)
+    s = Search(using=client, index='job_data', doc_type="job").query("match", job_name=query)
+    resp = s.execute()
+    arr = [hit for hit in resp]
+
+    for i in resp:
+        print(i)
+
+    return jsonify({"code":200, "data":{"list": "", "length": len(arr)}, "message":'ok'})
+
+
+
 
