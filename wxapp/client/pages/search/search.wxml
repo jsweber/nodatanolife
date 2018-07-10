@@ -34,7 +34,5 @@ tip: textarea 的 blur 事件会晚于页面上的 tap 事件，如果需要在 
         <view hidden="{{isShow}}" class="job-detail-wrapper">
              <job-detail info="{{singleJobInfo}}" bind:open="openInfo" bind:close="closeInfo"></job-detail>
         </view>
-       
     </view>
-    
 </view>
