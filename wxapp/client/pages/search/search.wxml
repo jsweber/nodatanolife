@@ -5,11 +5,6 @@
             <button size="default" loading="{{loading}}" formType="submit" class="search-btn">搜 索</button>
         </form>
     </view>
-    <job-detail inner-text="from search" bind:myevent="onMyEvent">
-        <view>
-            from slot
-        </view>
-    </job-detail>
 
     <view wx:if="{{!!searchVal}}" class="result-wrapper" bindsubmit="search">
         <form class="search-wrapper-min" bindsubmit="search">
@@ -20,7 +15,7 @@
             <text>共20条数据</text>
         </view>
         <view class="result-list">
-            <view class="result-item" bindtap="showDetail" wx:for="{{searchResults}}" wx:for-item="result" wx:key="result" data-id="{{result}}">
+            <view class="result-item" bindtap="openInfo" wx:for="{{searchResults}}" wx:for-item="result" wx:key="result.id" data-info="{{result}}" >
                 <view>
                     <text class="job-name">职位：web前端工程师</text>
                     <text class="publish-time">发布：2018年6月20号</text>
@@ -36,15 +31,10 @@ tip: textarea 的 blur 事件会晚于页面上的 tap 事件，如果需要在 
             </view>
             <view class="explain">反爬虫，只返回5条权重最高的数据</view>
         </view>
-        <view class="job-detail" hidden="{{isShow}}">
-            <view class="detial">
-                
-            </view>
-            <view class="clear-btn">
-                <icon type="clear" size="40" bindtap="closeDetail"/>
-            </view>
-            
+        <view hidden="{{isShow}}" class="job-detail-wrapper">
+             <job-detail info="{{singleJobInfo}}" bind:open="openInfo" bind:close="closeInfo"></job-detail>
         </view>
+       
     </view>
     
 </view>

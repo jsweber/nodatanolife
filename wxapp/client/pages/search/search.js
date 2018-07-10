@@ -2,13 +2,20 @@
 let myBehavior = require('../behaviors/my-hehavior.js')
 
 Page({
-    behaviors: [myBehavior, 'wx://form-field'],
+    behaviors: [myBehavior],
     data: {
         loading: false,
         minLoading: false,
         searchVal: '12',
         isShow: true,
-        searchResults: [1, 2]
+        searchResults: [{
+            id: 1,
+            job_name: '前端开发工程师'
+        }, {
+            id: 2,
+            job_name: 'java开发工程师'
+        }],
+        singleJobInfo: {}
     },
     search(e){
         console.log(getApp().globalData)
@@ -17,15 +24,16 @@ Page({
             loading: true
         })
     },
-    closeDetail(){
+    closeInfo(){
         this.setData({
             isShow: true
         })
     },
-    showDetail(e){
-        console.log(e.currentTarget.dataset.id)
+    openInfo(e){
+        console.log(e.currentTarget.dataset.info)
         this.setData({
-            isShow: false
+            isShow: false,
+            singleJobInfo: e.currentTarget.dataset.info
         })
     },
     onReady(){

@@ -1,22 +1,20 @@
 
 Component({
     properties: {
-        innerText: {
-            type: String,
-            value: 'default text'
+        info: {
+            type: Object,
+            value: {}
         }
     },
     data: {
-        someData: {}
+        
     },
     methods: {
-        doclick(){
-            console.log('click')
+        close(){
+            this.triggerEvent('close')
         },
-        ontap(){
-            this.triggerEvent('myevent', {
-                data: 'hello'
-            })
+        open(){
+            this.triggerEvent('open')
         }
     }
 })

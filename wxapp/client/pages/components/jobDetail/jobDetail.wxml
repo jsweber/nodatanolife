@@ -1,5 +1,8 @@
-<view class="inner">
-    {{innerText}}
-    <button bindtap="ontap">Button</button>
+<view class="job-detail">
+    <view class="detial">
+        <text>{{info.job_name}}</text>
+    </view>
+    <view class="clear-btn">
+        <icon type="clear" size="40" bindtap="close"/>
+    </view>
 </view>
-<slot></slot>
