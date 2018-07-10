@@ -8,11 +8,12 @@ from elasticsearch_dsl import Search
 parentDir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.insert(0, parentDir)
 from api_1_0 import api
-from __init__ import db
+from __init__ import es
 from models import Job
 import json
-
-client = Elasticsearch()
+#https://github.com/chiangf/Flask-Elasticsearch
+#https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+#https://elasticsearch-py.readthedocs.io/en/master/
 
 @api.route('/test', methods=['GET', 'POST'])
 def test():
@@ -35,14 +36,19 @@ def search():
     elif request.method == 'GET':
         query = request.args.get('q')
     print(query)
-    s = Search(using=client, index='job_data', doc_type="job").query("match", job_name=query)
-    resp = s.execute()
-    arr = [hit for hit in resp]
+    
+    # resp = es.search(index='job_data', doc_type='job', body={
+    #     'query': {
+    #         'match': {
+    #             'job_name': query
+    #         }
+    #     }
+    # })
+    resp = es.get('job_data', doc_type='job', id=1)
 
-    for i in resp:
-        print(i)
+    print(resp)
 
-    return jsonify({"code":200, "data":{"list": "", "length": len(arr)}, "message":'ok'})
+    return jsonify({"code":200, "data":{"list": "", "length": 12}, "message":'ok'})
 
 
 
