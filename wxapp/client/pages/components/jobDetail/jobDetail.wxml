@@ -1,7 +1,21 @@
 <view class="job-detail">
-    <view class="detial">
-        <text>{{info.job_name}}</text>
-    </view>
+    <scroll-view class="detial" scroll-y="true">
+        <view class="content">
+            <view class="job_name">
+                <text>{{info.job_name}}</text>           
+            </view>
+            <view class="resume-info">
+                <text>({{info.company}}/{{info.salary}})</text>
+            </view>
+
+            <view class="title">工作内容 ></view>
+            <view class="descible">{{info.descible}}</view>
+
+            <view class="title">工作要求 ></view>
+            <view class="required">{{info.required}}</view>
+        </view>
+        
+    </scroll-view>
     <view class="clear-btn">
         <icon type="clear" size="40" bindtap="close"/>
     </view>
