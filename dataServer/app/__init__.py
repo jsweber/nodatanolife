@@ -7,10 +7,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_moment import Moment
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+from elasticsearch import Elasticsearch
 
 basedir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 moment = Moment()
 db = SQLAlchemy()
+es = Elasticsearch()
 bootstrap = Bootstrap()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'

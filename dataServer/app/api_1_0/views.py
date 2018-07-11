@@ -2,19 +2,16 @@ import os, sys
 from datetime import datetime
 from flask_login import login_required
 from flask import Flask, make_response, url_for, request, json, jsonify, session, redirect, render_template
-from elasticsearch import Elasticsearch
-# from elasticsearch_dsl import Search
 
 parentDir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.insert(0, parentDir)
 from api_1_0 import api
-from __init__ import db
+from __init__ import es
 from models import Job
 import json
 #https://github.com/chiangf/Flask-Elasticsearch
 #https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
 #https://elasticsearch-py.readthedocs.io/en/master/
-es = Elasticsearch()
 
 @api.route('/test', methods=['GET', 'POST'])
 def test():
