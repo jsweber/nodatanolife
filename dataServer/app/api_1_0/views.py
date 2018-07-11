@@ -3,17 +3,18 @@ from datetime import datetime
 from flask_login import login_required
 from flask import Flask, make_response, url_for, request, json, jsonify, session, redirect, render_template
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import Search
+# from elasticsearch_dsl import Search
 
 parentDir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.insert(0, parentDir)
 from api_1_0 import api
-from __init__ import es
+from __init__ import db
 from models import Job
 import json
 #https://github.com/chiangf/Flask-Elasticsearch
 #https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
 #https://elasticsearch-py.readthedocs.io/en/master/
+es = Elasticsearch()
 
 @api.route('/test', methods=['GET', 'POST'])
 def test():
@@ -36,20 +37,9 @@ def search():
     elif request.method == 'GET':
         query = request.args.get('q')
     print(query)
-    
-    # resp = es.search(index='job_data', doc_type='job', body={
-    #     'query': {
-    #         'match': {
-    #             'job_name': query
-    #         }
-    #     }
-    # })
-    resp = es.get('job_data', doc_type='job', id=1)
 
-    print(resp)
+    resp = es.search(index='job_data', doc_type='job', body={"query": {"match": {"job_name": query}}})
+    hits = resp.get('hits')
 
-    return jsonify({"code":200, "data":{"list": "", "length": 12}, "message":'ok'})
-
-
-
+    return jsonify({"code":200, "data":{"list": [hit.get('_source') for hit in hits.get('hits')], "length": hits.get('total')}, "message":'ok'})
 

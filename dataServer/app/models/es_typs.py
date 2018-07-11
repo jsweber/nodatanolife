@@ -17,7 +17,7 @@ with open('/home/du/project/jobdata.json', 'r') as f:
     dataLen = len(jobdata)
     print('开始bulk....')
     while index * count < dataLen:
-        print('插入第[%d]数据' % index)
+        print('插入第[%d]批数据' % index)
 
         actions = [
             {

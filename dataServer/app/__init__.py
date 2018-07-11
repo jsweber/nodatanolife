@@ -7,12 +7,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_moment import Moment
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
-from flask_elasticsearch import FlaskElasticsearch
 
 basedir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 moment = Moment()
 db = SQLAlchemy()
-es = FlaskElasticsearch()
 bootstrap = Bootstrap()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -27,7 +25,6 @@ def create_app(config_name):
     config[config_name].init_app(app)
     moment.init_app(app)
     # db.init_app(app)
-    es.init_app(app)
     bootstrap.init_app(app)
     login_manager.init_app(app)
 
