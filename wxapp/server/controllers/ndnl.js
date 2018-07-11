@@ -1,6 +1,6 @@
 const {SwiperData, HotJobData} = require('../mockData')
 const axios = require('axios')
-const {Test} = require('../api')
+const {Test, Search} = require('../api')
 
 function buildResp(data){
     return {
@@ -37,7 +37,23 @@ async function report(ctx){
     })
 }
 
+async function search(ctx){
+    console.log(ctx.request)
+    let q = '', resp = ''
+    if (ctx.method === 'GET'){
+        q = ctx.request.query.q 
+    }
+    else if (ctx.method === 'POST'){
+        q = ctx.request.body.q 
+    }
+    // resp = await axios.post(Search, {
+    //     s : ctx.require.body.q 
+    // })
+    ctx.body = JSON.stringify(resp)
+}
+
 module.exports = {
     swiper,
-    hotJob
+    hotJob,
+    search
 }

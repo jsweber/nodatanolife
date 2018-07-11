@@ -11,6 +11,7 @@ router.post('/test', controllers.test)
 
 router.get('/swiper', controllers.ndnl.swiper)
 router.get('/hotjob', controllers.ndnl.hotJob)
+router.get('/s', controllers.ndnl.search)
 
 
 module.exports = router
