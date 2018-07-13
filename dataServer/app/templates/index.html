@@ -1,11 +1,34 @@
-<html>
-<head>
-    <title>no data no life</title>
-    <meta name="viewport" content="with=device-with">
-</head>
-<body>
-    <p>from template</p>
-    <h1>{{name}}</h1>{
-    <a href="{{url_for('static', filename='test.css')}}"></a>
-</body>
-</html>
+{% extends 'bootstrap/base.html' %}
+{% import 'macros/header.html' as header %}
+
+{% block title %}首页{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        .navbar-default .navbar-brand{
+            background:#337ab7;
+            color:#fff;
+            font-style: italic; 
+        }
+        .content{
+            margin-top:40px;
+        }
+    </style>
+{% endblock %}
+{% block navbar %}
+    {{ header.render(user) }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-12 col-lg-12">
+            <div class="jumbotron">
+                <h1>No Data No Life</h1>
+                <p>无数据不生活</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

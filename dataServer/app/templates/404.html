@@ -1,17 +1,32 @@
-<html>
-<head>
-    <title>no data no life</title>
-    <meta name="viewport" content="with=device-with">
+{% extends 'bootstrap/base.html' %}
+{% import 'macros/header.html' as header %}
+
+{% block title %}404{% endblock %}
+
+{% block head %}
+    {{ super() }}
     <style>
-        .center{
-            text-align: center;
-            line-height: 50px;
-            height: 50px;
-            margin-top: 50px;
+        .navbar-default .navbar-brand{
+            background:#337ab7;
+            color:#fff;
+            font-style: italic; 
+        }
+        .content{
+            margin-top:40px;
         }
     </style>
-</head>
-<body>
-    <p class="center">404</p>
-</body>
-</html>
+{% endblock %}
+{% block navbar %}
+    {{ header.render(user) }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-12 col-lg-12">
+            <div class="jumbotron">
+                <h2 class="text-center">404 No Found</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
