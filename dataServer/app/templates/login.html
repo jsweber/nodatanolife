@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'macros/header.html' as header %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block title %}首页{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        
+    </style>
+{% endblock %}
+{% block navbar %}
+    {{ header.render(user) }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-12 col-lg-12">
+            {% if name %}{{ name }} {% else %} Stranger {% endif %}
+            {{ wtf.quick_form(form) }}
+
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
