@@ -1,24 +1,6 @@
-{% extends 'bootstrap/base.html' %}
-{% import 'macros/header.html' as header %}
+{% extends 'base.html' %}
 
 {% block title %}首页{% endblock %}
-
-{% block head %}
-    {{ super() }}
-    <style>
-        .navbar-default .navbar-brand{
-            background:#337ab7;
-            color:#fff;
-            font-style: italic; 
-        }
-        .content{
-            margin-top:40px;
-        }
-    </style>
-{% endblock %}
-{% block navbar %}
-    {{ header.render(user) }}
-{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row content">

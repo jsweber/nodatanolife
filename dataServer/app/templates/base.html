@@ -1,14 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    {% block head %}
-    <title>ndnl {% block title %}{% endblock %}</title>
-    {% endblock %}
-</head>
-<body>
-    {% block body %}
-    {% endblock %}
-</body>
-</html>
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        .navbar-default .navbar-brand{
+            background:#337ab7;
+            color:#fff;
+            font-style: italic; 
+        }
+        .content{
+            margin-top:40px;
+        }
+    </style>
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a class="navbar-brand brand-bg" href="#">NdNl</a>    
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+            {{current_user}}
+            {% if current_user.is_authenticated %}
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
+            {% else %}  
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
+            {% endif %}
+        </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock %}
+{% block content %}
+{% endblock %}

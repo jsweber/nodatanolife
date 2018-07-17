@@ -7,10 +7,6 @@ basedir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file
 sys.path.insert(0, basedir)
 from __init__ import db, login_manager
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(init(user_id))
-
 class User(UserMixin, db.Model):
     __tablename__='user'
     __table_args__ = {"useexisting": True}
@@ -30,6 +26,9 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
     
+    def get_id(self):
+        return self.user_id
+
     # password = db.Column(db.String(45))
     telephone = db.Column(db.String(45))
     email = db.Column(db.String(45), unique=True, index=True)
@@ -37,6 +36,10 @@ class User(UserMixin, db.Model):
     
     def __repr__(self):
         return '<User %s>' % self.username
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 if __name__ == '__main__':
     pass
