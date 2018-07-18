@@ -24,7 +24,7 @@
         </ul>
         
         <ul class="nav navbar-nav navbar-right">
-            {{current_user}}
+            {{current_user.is_authenticated}}
             {% if current_user.is_authenticated %}
             <li><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
             {% else %}  

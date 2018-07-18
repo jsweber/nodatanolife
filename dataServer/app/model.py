@@ -1,9 +1,8 @@
-import os
-import sys
+import os, sys
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-basedir = os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+basedir = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, basedir)
 from __init__ import db, login_manager
 
