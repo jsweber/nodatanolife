@@ -14,6 +14,20 @@
             margin-top:40px;
         }
     </style>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script>
+        function logout(){
+            axios.get('/auth/logout').then(function(resp){
+                console.log(resp)
+            })
+        }
+        document.onload = function(){
+            document.querySelector('#login').onclick = function(){
+                logout()
+            }
+        }
+    
+    </script>
 {% endblock %}
 {% block navbar %}
 <nav class="navbar navbar-default">
@@ -26,9 +40,9 @@
         <ul class="nav navbar-nav navbar-right">
             {{current_user.is_authenticated}}
             {% if current_user.is_authenticated %}
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
+            <li><a href="javascript:;"  onclick="logout" id="logout"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
             {% else %}  
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
+            <li><a href="javascript:;" id="login"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
             {% endif %}
         </ul>
         </div>
@@ -37,4 +51,6 @@
 
 {% endblock %}
 {% block content %}
+
+
 {% endblock %}

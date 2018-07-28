@@ -4,7 +4,7 @@ import os, sys
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import Required, Length, Email
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 class NameForm(FlaskForm):
     name = StringField('what is your name?', validators=[Required()])
@@ -27,6 +27,7 @@ from model import User
 def login():
     form = LoginForm()
     print(current_user.is_authenticated) #False
+    print('submit',form.validate_on_submit())
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
@@ -39,3 +40,9 @@ def login():
 
     return render_template('auth/login.html', form=form)
 
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('logout')
+    return redirect(url_for('main.index'))
