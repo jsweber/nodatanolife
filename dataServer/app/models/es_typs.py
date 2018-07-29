@@ -7,7 +7,7 @@ import json, os
 with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     print('读取json中....')
     jobdata = json.load(f)
-    es = Elasticsearch(hosts=['localhost'])
+    es = Elasticsearch(hosts=['localhost'], request_timeout=100)
 
     print('生成actions中....')
     #60w+ too much....
