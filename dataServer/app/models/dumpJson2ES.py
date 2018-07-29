@@ -12,7 +12,7 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     print('生成actions中....')
     #60w+ too much....
 
-    index = 0
+    index = 1185
     count = 50
     tryAgainCount = 3
     index_name = 'job_data'
@@ -32,17 +32,9 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
             for d in jobdata[index * count: (index+1) * count]
         ]
 
-        errCount = 0
-        while errCount < tryAgainCount:
-            try:
-                elasticsearch.helpers.bulk(es, actions)
-                time.sleep(2)
-                errCount = tryAgainCount
-            except Exception as err:
-                print('error count '+ str(errCount) +' times', err)
-                
-                errCount +=1
-
+        elasticsearch.helpers.bulk(es, actions)
+        time.sleep(2)
+        
         index +=1
     
     print('bulk 结束 !!!!!')
