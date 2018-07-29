@@ -13,7 +13,7 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     #60w+ too much....
 
     index = 0
-    count = 1000
+    count = 50
     dataLen = len(jobdata)
     print('开始bulk....')
     while index * count < dataLen:
