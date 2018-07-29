@@ -7,13 +7,16 @@ import json, os
 with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     print('读取json中....')
     jobdata = json.load(f)
-    es = Elasticsearch(hosts=['localhost'], request_timeout=100)
+    es = Elasticsearch(hosts=['localhost'], timeout=60)
 
     print('生成actions中....')
     #60w+ too much....
 
     index = 0
-    count = 50
+    count = 500
+    tryAgainCount = 3
+    index_name = 'job_data'
+
     dataLen = len(jobdata)
     print('开始bulk....')
     while index * count < dataLen:
@@ -22,14 +25,21 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
         actions = [
             {
                 '_op_type': 'index',
-                '_index': 'job_data',
+                '_index': index_name,
                 '_type': 'job',
                 '_source': d
             }   
             for d in jobdata[index * count: (index+1) * count]
         ]
 
-        elasticsearch.helpers.bulk(es, actions)
+        errCount = 0
+        while errCount < tryAgainCount:
+            try:
+                elasticsearch.helpers.bulk(es, actions)
+                errCount = tryAgainCount
+            except Exception as err:
+                print('error count '+ str(errCount) +' times', err)
+                errCount +=1
 
         index +=1
     

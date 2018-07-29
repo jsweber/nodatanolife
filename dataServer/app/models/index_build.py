@@ -18,7 +18,7 @@ class JobType(DocType):
     crawl_time = Date(format='yyyy-MM-dd HH:mm:ss')
 
     class Meta:
-        index = 'job_data'
+        index = 'job_data2'
         doc_type = 'job'
 
 if __name__ == '__main__':
