@@ -1,7 +1,7 @@
 #把mysql数据倒到elasticsearch
 import elasticsearch.helpers
 from elasticsearch import Elasticsearch
-import json, os
+import json, os, time
 # from w3lib.html import remove_tags 
 
 with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
@@ -13,7 +13,7 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     #60w+ too much....
 
     index = 0
-    count = 500
+    count = 50
     tryAgainCount = 3
     index_name = 'job_data'
 
@@ -36,9 +36,11 @@ with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
         while errCount < tryAgainCount:
             try:
                 elasticsearch.helpers.bulk(es, actions)
+                time.sleep(2)
                 errCount = tryAgainCount
             except Exception as err:
                 print('error count '+ str(errCount) +' times', err)
+                
                 errCount +=1
 
         index +=1
