@@ -1,10 +1,10 @@
 #把mysql数据倒到elasticsearch
 import elasticsearch.helpers
 from elasticsearch import Elasticsearch
-import json
+import json, os
 # from w3lib.html import remove_tags 
 
-with open('/home/du/project/jobdata.json', 'r') as f:
+with open(os.path.abspath('../../../../jobdata.json'), 'r') as f:
     print('读取json中....')
     jobdata = json.load(f)
     es = Elasticsearch(hosts=['localhost'])

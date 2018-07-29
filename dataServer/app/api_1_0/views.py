@@ -33,7 +33,6 @@ def search():
         query = postData.get('q')
     elif request.method == 'GET':
         query = request.args.get('q')
-    print(query)
 
     resp = es.search(index='job_data', doc_type='job', body={"query": {"match": {"job_name": query}}})
     hits = resp.get('hits')
