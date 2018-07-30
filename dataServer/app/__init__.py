@@ -37,14 +37,14 @@ def create_app(config_name):
     from auth import auth as auth_blueprint
     from api_1_0 import api as api_blueprint
 
-    @app.route('/')
-    def index():
-        return redirect('main.index')
-
     app.register_blueprint(main_blueprint, url_prefix='/main')
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(api_blueprint, url_prefix='/api')
     
+    @app.route('/')
+    def index():
+        return url_for('main.index')
+        
     @app.errorhandler(404)
     def page_not_found(e):
         return render_template('404.html'), 404
