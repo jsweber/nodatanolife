@@ -39,7 +39,7 @@ def create_app(config_name):
 
     @app.route('/')
     def index():
-        redirect('main.index')
+        return redirect('main.index')
 
     app.register_blueprint(main_blueprint, url_prefix='/main')
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
