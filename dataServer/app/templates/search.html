@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}NdNl-搜索{% endblock %}
+
+{% block style %}
+<style>
+    .search-btn{
+        margin-top:20px;
+        padding: 7px 35px;
+    }
+    .my-col{
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row content">
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control search-val" aria-label="搜索输入框" placeholder="搜索">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="my-selected">数据分类</span><span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="javascript:;">职位</a></li>
+                        <li><a href="javascript:;">暂只支持职位信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 my-col">
+            <button type="button" class="btn btn-primary search-btn">搜 索</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+    var Constant = {
+            def: '数据分类',
+            prompText: '暂只支持职位信息'
+        },
+        $mySelect = $('.my-selected')
+        ;
+
+
+    $('.dropdown-menu li').click(function(e){
+        $mySelect.text(this.innerText)
+    })
+
+    $('.search-btn').click(function(){
+        var selectedText = $mySelect.text() 
+        console.log(selectedText)
+        if ((selectedText === Constant.def) || (selectedText=== Constant.prompText)){
+            return
+        }
+
+        var searchVal = $('.search-val').val()
+        $.ajax({
+            url: '/api/s',
+            type: 'get',
+            data:{
+                q: searchVal
+            }
+        }).done(function(resp){
+            console.log(resp)
+        }).fail(function(err){
+
+        })
+    })
+
+</script>
+{% endblock %}

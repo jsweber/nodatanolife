@@ -14,8 +14,11 @@ import json
 @main.route('/', methods=['GET', 'POST'])
 # @login_required
 def index():
-    
     return render_template('index.html', user=True)
+
+@main.route('/search', methods=['GET', 'POST'])
+def search():
+    return render_template('search.html')
     
 # def login():
 #     print(request.args.get('name', 'none'))

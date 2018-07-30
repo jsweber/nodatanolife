@@ -15,6 +15,9 @@
             margin-top:40px;
         }
     </style>
+    {% block style %}
+    {% endblock %}
+
     <script src="/static/axios.min.js"></script>
     <script>
         function logout(){
@@ -42,7 +45,7 @@
             {% if current_user.is_authenticated %}
             <li><a href="javascript:;"  onclick="logout" id="logout"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
             {% else %}  
-            <li><a href="javascript:;" id="login"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
+            <li><a href="{{ url_for('auth.login') }}" id="login"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
             {% endif %}
         </ul>
         </div>
@@ -51,6 +54,12 @@
 
 {% endblock %}
 {% block content %}
+{% endblock %}
 
+{% block scripts %}
+{{ super() }}
+
+{% block script %}
+{% endblock %}
 
 {% endblock %}
