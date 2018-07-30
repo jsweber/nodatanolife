@@ -4,7 +4,7 @@
 
 {% block head %}
     {{ super() }}
-    <link rel="shortcut icon" href="/ndnl.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/ndnl.ico" type="image/x-icon">
     <style>
         .navbar-default .navbar-brand{
             background:#337ab7;
@@ -15,7 +15,7 @@
             margin-top:40px;
         }
     </style>
-    <script src="/axios.min.js"></script>
+    <script src="/static/axios.min.js"></script>
     <script>
         function logout(){
             axios.get('/auth/logout').then(function(resp){
