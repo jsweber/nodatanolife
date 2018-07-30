@@ -38,7 +38,8 @@
     <div class="container-fluid">
         <a class="navbar-brand brand-bg" href="#">NdNl</a>    
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            <li class="active"><a href="{{ url_for('main.index') }}"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            <li class="active"><a href="{{ url_for('main.search') }}"><span class="glyphicon glyphicon-search"> Search</span></a></li>
         </ul>
         
         <ul class="nav navbar-nav navbar-right">

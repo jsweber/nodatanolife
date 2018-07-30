@@ -5,11 +5,23 @@
 {% block style %}
 <style>
     .search-btn{
-        margin-top:20px;
+        margin-top:10px;
         padding: 7px 35px;
     }
     .my-col{
         text-align: center;
+    }
+    .navbar{
+        margin-bottom: 0px;
+    }
+    .content{
+        margin-bottom: 30px;
+    }
+    .result{
+        display: none;
+    }
+    .item-title{
+        font-weight: bold;
     }
 </style>
 {% endblock %}
@@ -17,7 +29,7 @@
 {% block content %}
 <div class="container">
     <div class="row content">
-        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 move-col">
             <div class="input-group">
                 <input type="text" class="form-control search-val" aria-label="搜索输入框" placeholder="搜索">
                 <div class="input-group-btn">
@@ -29,9 +41,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 my-col">
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 my-col move-col">
             <button type="button" class="btn btn-primary search-btn">搜 索</button>
         </div>
+    </div>
+
+    <div class="row result">
     </div>
 </div>
 
@@ -40,9 +55,11 @@
 <script>
     var Constant = {
             def: '数据分类',
-            prompText: '暂只支持职位信息'
+            prompText: '暂只支持职位信息',
+            job: '职位'
         },
         $mySelect = $('.my-selected')
+        $result = $('.result')
         ;
 
 
@@ -51,10 +68,12 @@
     })
 
     $('.search-btn').click(function(){
-        var selectedText = $mySelect.text() 
-        console.log(selectedText)
-        if ((selectedText === Constant.def) || (selectedText=== Constant.prompText)){
+        var selectedText = $mySelect.text(), category = Constant.def
+        
+        if (selectedText=== Constant.prompText){
             return
+        }else if (selectedText === Constant.def){
+            category = Constant.job
         }
 
         var searchVal = $('.search-val').val()
@@ -62,14 +81,49 @@
             url: '/api/s',
             type: 'get',
             data:{
-                q: searchVal
+                q: searchVal,
+                category: category
             }
         }).done(function(resp){
-            console.log(resp)
+            if (resp.code === 200){
+                searchSuccessAnimation()
+                $result.html(showResult(resp.data.list, resp.data.length)).show()
+            }
+            
         }).fail(function(err){
 
         })
     })
+
+    function searchSuccessAnimation(){
+        var $moves = $('.move-col')
+        $moves.eq(0).removeClass('col-md-offset-3 col-lg-offset-3')
+        $moves.eq(1).removeClass('col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6').addClass('col-md-2 col-lg-2')    
+        $('.search-btn').css('marginTop','0')
+    }
+
+    function showResult(list, len){
+        var html = '<div class=data-count>匹配数据总数：' + len + '， 返回优先级最高的10条数据</div>'
+        for(var i = 0; i < list.length; i++){
+            html += buildPanel(list[i])
+        }
+        return html
+    }
+    
+    function buildPanel(item){
+        return `<div class="panel panel-default">
+            <div class="panel-heading">${item.job_name}</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">${item.company}</div><div class="col-md-4 col-lg-4">${item.salary}</div><div class="col-md-4 col-lg-4">${item.work_location}</div>
+                    <div class="col-md-4 col-lg-4"><span class=item-title>爬取时间：</span>：${item.crawl_time}</div><div class="col-md-4 col-lg-4"><span class=item-title>岗位发布：</span>${item.publish_time}</div><div class="col-md-4 col-lg-4"><a href="${item.job_url}" target="_blank">外链</a></div>
+                    <div class="col-md-12 col-lg-12"><span class=item-title>其他福利：</span>${item.welfare_list}</div>
+                    <div class="col-md-12 col-lg-12"><span class=item-title>岗位要求：</span>${item.required_list}</div>
+                    <div class="col-md-12 col-lg-12"><span class=item-title>岗位描述：</span>${item.job_describe}</div>
+                </div>
+            </div>
+        </div>`
+    }
 
 </script>
 {% endblock %}
