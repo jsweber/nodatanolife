@@ -23,6 +23,10 @@
     .item-title{
         font-weight: bold;
     }
+    .warning{
+        margin-top: 10px;
+        display:none;
+    }
 </style>
 {% endblock %}
 
@@ -44,6 +48,10 @@
         <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 my-col move-col">
             <button type="button" class="btn btn-primary search-btn">搜 索</button>
         </div>
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 warning move-col" id="warning-board">
+            <div class="alert alert-warning" role="alert" id="warning-board">请求错误！</div>
+        </div>
+        
     </div>
 
     <div class="row result">
@@ -77,6 +85,10 @@
         }
 
         var searchVal = $('.search-val').val()
+        if (!searchVal.replace(/\s+/g, '')){
+            warnShow()
+            return 
+        }
         $.ajax({
             url: '/api/s',
             type: 'get',
@@ -88,17 +100,28 @@
             if (resp.code === 200){
                 searchSuccessAnimation()
                 $result.html(showResult(resp.data.list, resp.data.length)).show()
+            }else {
+                warnShow()
             }
             
         }).fail(function(err){
-
+            warnShow()
         })
     })
 
+    function warnShow(){
+        var $warn = $('#warning-board')
+        console.log($warn)
+        $warn.show()
+        setTimeout(function(){
+            $warn.hide()
+        }, 3000)
+    }
+
     function searchSuccessAnimation(){
         var $moves = $('.move-col')
-        $moves.eq(0).removeClass('col-md-offset-3 col-lg-offset-3')
-        $moves.eq(1).removeClass('col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6').addClass('col-md-2 col-lg-2')    
+        $moves.removeClass('col-md-offset-3 col-lg-offset-3')
+        $moves.eq(1).removeClass('col-md-6 col-lg-6').addClass('col-md-2 col-lg-2')    
         $('.search-btn').css('marginTop','0')
     }
 
