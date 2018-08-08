@@ -19,6 +19,10 @@ def index():
 @main.route('/search', methods=['GET', 'POST'])
 def search():
     return render_template('search.html')
+
+@main.route('/analysis', methods=['GET', 'POST'])
+def analysis():
+    return render_template('analysis.html')
     
 # def login():
 #     print(request.args.get('name', 'none'))
